@@ -735,32 +735,21 @@ def generate_pdf(format_type="standard"):
             ("GRID", (0,0), (-1,-1), 0.25, colors.grey),
         ])
         
-        # Applica sfondo grigio solo all'header (la riga che contiene "Giorno" e le ore)
-        # L'header è la riga che abbiamo aggiunto dopo il titolo
-        table_style.append(("BACKGROUND", (header_row,0), (header_row,-1), colors.lightgrey))
+        # Tutte le celle hanno sfondo bianco (nessun sfondo grigio)
         
         # Unisci le celle del titolo per farlo estendere su tutte le colonne
         if format_type == "tascabile":
             # Per formato tascabile, unisci solo la prima riga (titolo docente)
             table_style.append(("SPAN", (0,0), (-1,0)))
-            # Rimuovi sfondo grigio dalla riga del titolo
-            table_style.append(("BACKGROUND", (0,0), (-1,0), colors.white))
         else:
-            # Per formati più grandi, unisci tutte le righe del titolo
+            # Per formati più grandi, unisci tutte le righe del titolo e la riga vuota
             table_style.extend([
                 ("SPAN", (0,0), (-1,0)),  # ORARIO SETTIMANALE
                 ("SPAN", (0,1), (-1,1)),  # Nome docente
                 ("SPAN", (0,2), (-1,2)),  # Materie
                 ("SPAN", (0,3), (-1,3)),  # Istituto
                 ("SPAN", (0,4), (-1,4)),  # Anno scolastico
-            ])
-            # Rimuovi sfondo grigio dalle righe del titolo
-            table_style.extend([
-                ("BACKGROUND", (0,0), (-1,0), colors.white),  # ORARIO SETTIMANALE
-                ("BACKGROUND", (0,1), (-1,1), colors.white),  # Nome docente
-                ("BACKGROUND", (0,2), (-1,2), colors.white),  # Materie
-                ("BACKGROUND", (0,3), (-1,3), colors.white),  # Istituto
-                ("BACKGROUND", (0,4), (-1,4), colors.white),  # Anno scolastico
+                ("SPAN", (0,5), (-1,5)),  # Riga vuota
             ])
         
         if format_type != "tascabile":
