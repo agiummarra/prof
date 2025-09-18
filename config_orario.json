@@ -1,0 +1,278 @@
+{
+  "giorni_settimana": [
+    "LUN",
+    "MER",
+    "GIO",
+    "VEN",
+    "SAB"
+  ],
+  "giorno_libero": "MAR",
+  "include_giorno_libero": false,
+  "ore_giornaliere": 6,
+  "ore_attive": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "orari": {
+    "1": {
+      "dalle": "08:15",
+      "alle": "09:15"
+    },
+    "2": {
+      "dalle": "09:15",
+      "alle": "10:15"
+    },
+    "3": {
+      "dalle": "10:15",
+      "alle": "11:15"
+    },
+    "4": {
+      "dalle": "11:15",
+      "alle": "12:15"
+    },
+    "5": {
+      "dalle": "12:15",
+      "alle": "13:15"
+    },
+    "6": {
+      "dalle": "08:15",
+      "alle": "09:15"
+    }
+  },
+  "schedule": {
+    "LUN": {
+      "1": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "2": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "3": {
+        "classe": "2Esa",
+        "edificio": "MB",
+        "piano": "PT",
+        "aula": "A15"
+      },
+      "4": {
+        "classe": "1Dsa",
+        "edificio": "MA",
+        "piano": "PT",
+        "aula": "A1"
+      },
+      "5": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "6": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      }
+    },
+    "MAR": {
+      "1": {
+        "classe": "DISP.",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "2": {
+        "classe": "DISP.",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "3": {
+        "classe": "DISP.",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "4": {
+        "classe": "DISP.",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "5": {
+        "classe": "DISP.",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "6": {
+        "classe": "DISP.",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      }
+    },
+    "MER": {
+      "1": {
+        "classe": "1Asp",
+        "edificio": "C",
+        "piano": "1P",
+        "aula": "A43"
+      },
+      "2": {
+        "classe": "1Asp",
+        "edificio": "C",
+        "piano": "1P",
+        "aula": "A43"
+      },
+      "3": {
+        "classe": "DISP.",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "4": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "5": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "6": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      }
+    },
+    "GIO": {
+      "1": {
+        "classe": "1Bsa",
+        "edificio": "MB",
+        "piano": "PT",
+        "aula": "A16"
+      },
+      "2": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "3": {
+        "classe": "1Asp",
+        "edificio": "C",
+        "piano": "1P",
+        "aula": "A43"
+      },
+      "4": {
+        "classe": "1Asp",
+        "edificio": "C",
+        "piano": "1P",
+        "aula": "A43"
+      },
+      "5": {
+        "classe": "1Asa",
+        "edificio": "MA",
+        "piano": "2P",
+        "aula": "A20"
+      },
+      "6": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      }
+    },
+    "VEN": {
+      "1": {
+        "classe": "1Dsa",
+        "edificio": "MA",
+        "piano": "PT",
+        "aula": "A1"
+      },
+      "2": {
+        "classe": "DISP.",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "3": {
+        "classe": "2Esa",
+        "edificio": "MB",
+        "piano": "PT",
+        "aula": "A15"
+      },
+      "4": {
+        "classe": "1Asp",
+        "edificio": "C",
+        "piano": "1P",
+        "aula": "A43"
+      },
+      "5": {
+        "classe": "1Asp",
+        "edificio": "C",
+        "piano": "1P",
+        "aula": "A43"
+      },
+      "6": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      }
+    },
+    "SAB": {
+      "1": {
+        "classe": "1Asp",
+        "edificio": "C",
+        "piano": "1P",
+        "aula": "A43"
+      },
+      "2": {
+        "classe": "DISP.",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "3": {
+        "classe": "1Bsa",
+        "edificio": "MB",
+        "piano": "PT",
+        "aula": "A13"
+      },
+      "4": {
+        "classe": "1Asa",
+        "edificio": "MA",
+        "piano": "2P",
+        "aula": "A20"
+      },
+      "5": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      },
+      "6": {
+        "classe": "",
+        "edificio": "",
+        "piano": "",
+        "aula": ""
+      }
+    }
+  },
+  "docente": "Cristina Bellina Terra",
+  "materie": "Matematica e Fisica",
+  "istituto": "Liceo Scientifico \"E. Fermi\" Ragusa"
+}
