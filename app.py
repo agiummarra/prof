@@ -634,6 +634,9 @@ def generate_pdf(format_type="standard"):
         
         table_data.append([Paragraph(f"<b>{h}</b>", header_style) for h in header])
         
+        # Calcola l'indice dell'header (l'ultima riga aggiunta)
+        header_row = len(table_data) - 1
+        
         # Verifica che ci siano dati da stampare
         has_data = False
         
@@ -707,17 +710,14 @@ def generate_pdf(format_type="standard"):
             ("ALIGN", (0,0), (-1,-1), "CENTER"),    # Centratura orizzontale
         ]
         
-        # Calcola l'indice dell'header (dopo il titolo)
-        if format_type == "tascabile":
-            header_row = 1  # Dopo il titolo del docente
-        else:
-            header_row = 5  # Dopo il titolo completo
-        
         # Applica griglia a tutta la tabella
         table_style.extend([
             ("GRID", (0,0), (-1,-1), 0.25, colors.grey),
-            ("BACKGROUND", (header_row,0), (header_row,-1), colors.lightgrey),
         ])
+        
+        # Applica sfondo grigio solo all'header (la riga che contiene "Giorno" e le ore)
+        # L'header è la riga che abbiamo aggiunto dopo il titolo
+        table_style.append(("BACKGROUND", (header_row,0), (header_row,-1), colors.lightgrey))
         
         # Unisci le celle del titolo per farlo estendere su tutte le colonne
         if format_type == "tascabile":
