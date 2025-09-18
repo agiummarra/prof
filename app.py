@@ -44,6 +44,7 @@ if 'schedule_data' not in st.session_state:
             'docente': 'Cristina Bellina Terra',
             'materie': 'Matematica e Fisica',
             'istituto': ISTITUTO_DEFAULT,
+            'anno_scolastico': '2025/2026',
             'giorni_settimana': ['LUN', 'MAR', 'MER', 'GIO', 'VEN', 'SAB'],
             'giorno_libero': 'DOM',
             'include_giorno_libero': False,
@@ -170,6 +171,7 @@ else:
 st.sidebar.markdown(f"**Docente:** {st.session_state.schedule_data.get('docente', 'Cristina Bellina Terra')}")
 st.sidebar.markdown(f"**Materie:** {st.session_state.schedule_data.get('materie', 'Matematica e Fisica')}")
 st.sidebar.markdown(f"**Istituto:** {st.session_state.schedule_data.get('istituto', ISTITUTO_DEFAULT)}")
+st.sidebar.markdown(f"**A.S.:** {st.session_state.schedule_data.get('anno_scolastico', '2025/2026')}")
 
 # Funzioni di supporto
 def display_schedule(show_empty=False, format_type="Standard"):
@@ -360,6 +362,13 @@ def configure_schedule():
             key="istituto_input"
         )
         st.session_state.schedule_data['istituto'] = istituto
+        
+        anno_scolastico = st.text_input(
+            "Anno Scolastico:",
+            value=st.session_state.schedule_data.get('anno_scolastico', '2025/2026'),
+            key="anno_scolastico_input"
+        )
+        st.session_state.schedule_data['anno_scolastico'] = anno_scolastico
     
     st.markdown("---")
     
@@ -593,6 +602,7 @@ def generate_pdf(format_type="standard"):
         docente = st.session_state.schedule_data.get('docente', 'Cristina Bellina Terra')
         materie = st.session_state.schedule_data.get('materie', 'Matematica e Fisica')
         istituto = st.session_state.schedule_data.get('istituto', ISTITUTO_DEFAULT)
+        anno_scolastico = st.session_state.schedule_data.get('anno_scolastico', '2025/2026')
         
         if format_type == "tascabile":
             # Per formato tascabile, aggiungi solo il nome del docente
@@ -622,6 +632,9 @@ def generate_pdf(format_type="standard"):
             istituto_row = [Paragraph(f"{istituto}", style)] + [""] * len(ore_attive)
             table_data.append(istituto_row)
             
+            anno_scolastico_row = [Paragraph(f"A.S. {anno_scolastico}", style)] + [""] * len(ore_attive)
+            table_data.append(anno_scolastico_row)
+            
             # Riga vuota
             empty_row = [""] * (1 + len(ore_attive))
             table_data.append(empty_row)
@@ -633,9 +646,6 @@ def generate_pdf(format_type="standard"):
             header = ["Giorno"] + [f"{i}ª ora" for i in ore_attive]
         
         table_data.append([Paragraph(f"<b>{h}</b>", header_style) for h in header])
-        
-        # Calcola l'indice dell'header (l'ultima riga aggiunta)
-        header_row = len(table_data) - 1
         
         # Verifica che ci siano dati da stampare
         has_data = False
@@ -690,6 +700,16 @@ def generate_pdf(format_type="standard"):
             st.warning("⚠️ Nessun dato da stampare nell'orario!")
             return None, None
         
+        # Calcola l'indice dell'header (la riga che contiene "Giorno" e le ore)
+        # L'header è la riga che abbiamo aggiunto dopo il titolo
+        # Devo contare quante righe del titolo ci sono
+        if format_type == "tascabile":
+            # Per formato tascabile: 1 riga titolo + 1 riga header
+            header_row = 1
+        else:
+            # Per formati più grandi: 5 righe titolo + 1 riga vuota + 1 riga header
+            header_row = 6
+        
         # Crea tabella
         if format_type == "tascabile":
             col_widths = [35] + [45] * len(ore_attive)  # Allargata colonna Giorno
@@ -732,6 +752,7 @@ def generate_pdf(format_type="standard"):
                 ("SPAN", (0,1), (-1,1)),  # Nome docente
                 ("SPAN", (0,2), (-1,2)),  # Materie
                 ("SPAN", (0,3), (-1,3)),  # Istituto
+                ("SPAN", (0,4), (-1,4)),  # Anno scolastico
             ])
             # Rimuovi sfondo grigio dalle righe del titolo
             table_style.extend([
@@ -739,6 +760,7 @@ def generate_pdf(format_type="standard"):
                 ("BACKGROUND", (0,1), (-1,1), colors.white),  # Nome docente
                 ("BACKGROUND", (0,2), (-1,2), colors.white),  # Materie
                 ("BACKGROUND", (0,3), (-1,3), colors.white),  # Istituto
+                ("BACKGROUND", (0,4), (-1,4), colors.white),  # Anno scolastico
             ])
         
         if format_type != "tascabile":
